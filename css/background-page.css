@@ -1,23 +1,24 @@
-body{
-    width: 100%;
-    height: 100%;
-}
+
 main{
     margin-top: 25px;
     margin-bottom: 25px;
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    align-items: baseline;
+    align-items: stretch;
+    justify-content: space-around;
+    align-content: center;
+    text-align: center;
     gap: 10px;
 }
 
 .cartao-pokemon{
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     align-items: center;
-    text-align: center;
+    height: 30rem;
+    width: 18rem;
 }
 .img-pokemon{
     margin:20px auto;

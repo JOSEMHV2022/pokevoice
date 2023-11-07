@@ -29,7 +29,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
             arrayDePokemon.forEach(pokemon => {
                 $('main').append(`
-                    <div class="card cartao-pokemon" style="width: 35%;">
+                    <div class="card cartao-pokemon" style="width: 18rem;">
                         <img src="${pokemon.img}" class="img-pokemon" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${pokemon.name}</h5>

@@ -20,10 +20,13 @@ main{
     height: 30rem;
     width: 18rem;
 }
-.img-pokemon{
-    margin:20px auto;
+.div_imagem{
+    width: 15rem;
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
 
 
 

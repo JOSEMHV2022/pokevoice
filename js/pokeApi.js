@@ -13,7 +13,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
                 id: pokemonData.id,
                 types: pokemonData.types.map((type) => type.type.name),
                 abilities: pokemonData.abilities.map((ability) => ability.ability.name),
-                img: "./img/"+pokemonData.name+".gif", // Use uma URL de imagem apropriada
+                img: "./img/pokemons/"+pokemonData.name+".gif", // Use uma URL de imagem apropriada
                 height: pokemonData.height,
                 weight: pokemonData.weight
             };
@@ -29,7 +29,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
             arrayDePokemon.forEach(pokemon => {
                 $('main').append(`
-                    <div class="card cartao-pokemon" style="width: 18rem;">
+                    <div class="card cartao-pokemon" style="width: 20%;">
                         <img src="${pokemon.img}" class="img-pokemon" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${pokemon.name}</h5>

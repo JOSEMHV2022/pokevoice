@@ -13,7 +13,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
                 id: pokemonData.id,
                 types: pokemonData.types.map((type) => type.type.name),
                 abilities: pokemonData.abilities.map((ability) => ability.ability.name),
-                img: "./img/pokemons/"+pokemonData.name+".gif", // Use uma URL de imagem apropriada
+                img: "./img/"+pokemonData.name+".gif", // Use uma URL de imagem apropriada
                 height: pokemonData.height,
                 weight: pokemonData.weight
             };

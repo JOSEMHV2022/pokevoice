@@ -8,25 +8,21 @@ main{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    align-items: baseline;
     gap: 10px;
 }
 
 .cartao-pokemon{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-end;
     align-items: center;
+    text-align: center;
 }
-
 .img-pokemon{
-    top: 0;
-  left: 0;
-  width: 90px;
-  height: 90px;
-    scale: 1;
     margin:20px auto;
 }
+
 
 
 

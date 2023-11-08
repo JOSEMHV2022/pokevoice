@@ -1,3 +1,5 @@
+
+
 // Obtém dados de 5 Pokémon
 fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     .then((response) => response.json())
@@ -13,7 +15,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
                 id: pokemonData.id,
                 types: pokemonData.types.map((type) => type.type.name),
                 abilities: pokemonData.abilities.map((ability) => ability.ability.name),
-                img: "./img/pokemons/"+pokemonData.name+".gif", // Use uma URL de imagem apropriada
+                img: "./img/pokemons/" + pokemonData.name + ".gif", // Use uma URL de imagem apropriada
                 height: pokemonData.height,
                 weight: pokemonData.weight
             };
@@ -22,6 +24,41 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         }
 
         // 'arrayDePokemon' agora contém objetos de Pokémon
+
+        function menuMostra() {
+            const pokemonsSelecionados = [];
+
+            for (let i = 0; i < 3; i++) {
+                let intervalo;
+                let pokemon;
+
+                do {
+                    // Gere um número aleatório entre 50 e 140 para selecionar um Pokémon.
+                    intervalo = Math.floor(Math.random() * (140 - 50 + 1) + 50);
+                    // Obtenha o Pokémon com base no número gerado.
+                    pokemon = arrayDePokemon[intervalo];
+                } while (pokemonsSelecionados.includes(pokemon));
+
+                // Adicione o Pokémon selecionado à lista de Pokémon selecionados.
+                pokemonsSelecionados.push(pokemon);
+
+                // Adicione o Pokémon ao elemento "inicio" no seu HTML.
+                $('#inicio').append(`
+                <div class="${pokemon.name}">
+                    <img src="${pokemon.img}" class="img-pokemon" alt="...">
+                </div>
+            `);
+            }
+        }
+        menuMostra()
+
+
+        $(".logo").on("click", function () {
+            $("main").empty();
+            $("main").append(`<div id="inicio"></div>`);
+            menuMostra();
+        });
+
 
         // MODO CARDS
         $('#cartoes').on('click', function () {
@@ -59,40 +96,40 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
     });
 
 
-    function getTextClass(types) {
-        // Mapeia os tipos aos estilos de texto
-        const typeStyles = {
-          'normal': 'text-secondary',
-          'fighting': 'text-danger-emphasis',
-          'flying': 'text-primary',
-          'poison': 'text-danger-emphasis',
-          'ground': 'text-warning-emphasis',
-          'rock': 'text-warning',
-          'bug': 'text-warning-emphasis',
-          'ghost': 'text-secondary',
-          'steel': 'text-danger-emphasis',
-          'fire': 'text-danger',
-          'water': 'text-primary-emphasis',
-          'grass': 'text-success',
-          'electric': 'text-warning-emphasis',
-          'psychic': 'text-secondary-emphasis',
-          'ice': 'text-primary',
-          'dragon': 'text-danger',
-          'dark': 'text-dark',
-          'fairy': 'text-light-emphasis'
-          // Adicione os tipos restantes conforme necessário
-        };
-      
-        // Inicializa uma classe padrão (por exemplo, 'text-secondary')
-        let textClass = 'text-secondary';
-      
-        // Verifica cada tipo e atribui a classe de estilo correspondente
-        for (const type of types) {
-          if (type in typeStyles) {
+function getTextClass(types) {
+    // Mapeia os tipos aos estilos de texto
+    const typeStyles = {
+        'normal': 'text-secondary',
+        'fighting': 'text-danger-emphasis',
+        'flying': 'text-primary',
+        'poison': 'text-danger-emphasis',
+        'ground': 'text-warning-emphasis',
+        'rock': 'text-warning',
+        'bug': 'text-warning-emphasis',
+        'ghost': 'text-secondary',
+        'steel': 'text-danger-emphasis',
+        'fire': 'text-danger',
+        'water': 'text-primary-emphasis',
+        'grass': 'text-success',
+        'electric': 'text-warning-emphasis',
+        'psychic': 'text-secondary-emphasis',
+        'ice': 'text-primary',
+        'dragon': 'text-danger',
+        'dark': 'text-dark',
+        'fairy': 'text-light-emphasis'
+        // Adicione os tipos restantes conforme necessário
+    };
+
+    // Inicializa uma classe padrão (por exemplo, 'text-secondary')
+    let textClass = 'text-secondary';
+
+    // Verifica cada tipo e atribui a classe de estilo correspondente
+    for (const type of types) {
+        if (type in typeStyles) {
             textClass = typeStyles[type];
             break; // Para a primeira correspondência
-          }
         }
-      
-        return textClass;
-      }
+    }
+
+    return textClass;
+}

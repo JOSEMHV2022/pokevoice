@@ -92,7 +92,84 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
         // MODO POKEDEX
         $('#pokedex').on('click', function () {
-            alert("poke");
+            $('main').html(`<div class="pokedex">
+            <div class="pokemon">
+                <h1>Pokedex</h1>
+                <div class="borda">
+                    <div class="luzes">
+                        <div class="luz1"></div>
+                        <div class="luz2"></div>
+                    </div>
+                    <div class="tela">
+                        <div class="pokeimgem"></div>
+                        <p class="texto-id">
+                            ID:<span class="numero">0</spanclass=>
+                        </p>
+                    </div>
+                    <div class="luz"></div>
+                </div>
+                <div class="nome-botoes">
+                    <div class="nome">
+                    
+                    </div>
+                    <div>
+                        <button id="anterior"><</button>
+                        <button id="posterior">></button>
+                    </div>
+                </div>
+            </div>
+            <div class="informacao">
+                <h2>Ataques:</h2>
+                <div class="ataques">
+                </div>
+                <h3>Tipo:</h3>
+                <div class="tipo">
+                </div>
+            </div>
+        </div>`)
+            intervalo = Math.floor(Math.random() * (151 - 1 + 1) + 1);
+            pokemon = arrayDePokemon[intervalo-1];
+            $('.pokeimgem').html(`
+                </div>
+                <img src="${pokemon.img}" class="img-pokemon" alt="...">
+            </div>
+        `);
+            $('.numero').html(`${pokemon.id}`)
+            $('.nome').html(`${pokemon.name}`)
+            $('.ataques').html(`${pokemon.abilities}`)
+            $('.tipo').html(`${pokemon.types}`)
+            $('.tipo').addClass(`${getTextClass(pokemon.types)}`)
+            
+            $('#anterior').on('click', function () {
+                const idAtual = parseInt($('.numero').text()); // Obtém o ID atual convertendo para número
+                const novoIndice = (idAtual === 1) ? arrayDePokemon.length - 1 : idAtual - 2;
+                atualizarPokemon(novoIndice);
+              });
+              
+              $('#posterior').on('click', function () {
+                const idAtual = parseInt($('.numero').text()); // Obtém o ID atual convertendo para número
+                const novoIndice = (idAtual === arrayDePokemon.length) ? 0 : idAtual;
+                atualizarPokemon(novoIndice);
+              });
+              
+              function atualizarPokemon(novoIndice) {
+                const novoPokemon = arrayDePokemon[novoIndice];
+              
+                $('.pokeimgem').html(`
+                  <div>
+                    <img src="${novoPokemon.img}" class="img-pokemon" alt="...">
+                  </div>
+                `);
+                $('.numero').html(`${novoPokemon.id}`);
+                $('.nome').html(`${novoPokemon.name}`);
+                $('.ataques').html(`<ul>${novoPokemon.abilities.map(ataque => `<li>${ataque}</li>`).join('')}</ul>`);
+                $('.tipo').html(`${novoPokemon.types}`);
+                $('.tipo').attr('class', 'tipo').addClass(`${getTextClass(novoPokemon.types)}`);
+              }
+              
+
+
+
         });
     })
     .catch((error) => {
@@ -103,20 +180,20 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 function getTextClass(types) {
     // Mapeia os tipos aos estilos de texto
     const typeStyles = {
-        'normal': 'text-secondary',
+        'normal': 'text-body',
         'fighting': 'text-danger-emphasis',
         'flying': 'text-primary',
         'poison': 'text-danger-emphasis',
         'ground': 'text-warning-emphasis',
         'rock': 'text-warning',
         'bug': 'text-warning-emphasis',
-        'ghost': 'text-secondary',
+        'ghost': 'text-light-emphasis',
         'steel': 'text-danger-emphasis',
         'fire': 'text-danger',
         'water': 'text-primary-emphasis',
-        'grass': 'text-success',
+        'grass': 'text-success-emphasis',
         'electric': 'text-warning-emphasis',
-        'psychic': 'text-secondary-emphasis',
+        'psychic': 'text-body-secondary',
         'ice': 'text-primary',
         'dragon': 'text-danger',
         'dark': 'text-dark',
@@ -137,3 +214,6 @@ function getTextClass(types) {
 
     return textClass;
 }
+
+
+

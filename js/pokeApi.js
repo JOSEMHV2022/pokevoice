@@ -28,15 +28,15 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         function menuMostra() {
             const pokemonsSelecionados = [];
 
-            for (let i = 0; i < 3; i++) {
+            for (let i = 0; i < 4; i++) {
                 let intervalo;
                 let pokemon;
 
                 do {
                     // Gere um número aleatório entre 50 e 140 para selecionar um Pokémon.
-                    intervalo = Math.floor(Math.random() * (140 - 50 + 1) + 50);
+                    intervalo = Math.floor(Math.random() * (151 - 1 + 1) + 1);
                     // Obtenha o Pokémon com base no número gerado.
-                    pokemon = arrayDePokemon[intervalo];
+                    pokemon = arrayDePokemon[intervalo-1];
                 } while (pokemonsSelecionados.includes(pokemon));
 
                 // Adicione o Pokémon selecionado à lista de Pokémon selecionados.
@@ -44,7 +44,11 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
 
                 // Adicione o Pokémon ao elemento "inicio" no seu HTML.
                 $('#inicio').append(`
-                <div class="${pokemon.name}">
+                <div class="elemento${i+1}">
+                    <div class="treinador${i+1}">
+                        <img src="img/treinador${i+1}.png" class="treinador" alt="logo do site PokeInfos">
+                    <p class="frase-treinador">Eu escolho você <span class="nomes ${getTextClass(pokemon.types)}">${pokemon.name}</span>!</p>
+                    </div>
                     <img src="${pokemon.img}" class="img-pokemon" alt="...">
                 </div>
             `);

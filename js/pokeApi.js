@@ -1,17 +1,17 @@
 
 
 // Obtém dados de 5 Pokémon
-fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
-    .then((response) => response.json())
-    .then(async (data) => {
+fetch("https://pokeapi.co/api/v2/pokemon?limit=151")//Este trecho utiliza a função fetch para obter dados da URL fornecida dos 151 Pokémon da PokeAPI
+    .then((resposta) => resposta.json())
+    .then(async (data) => {// then são colocados aqui para lidar com a resposta. O primeiro converte a resposta para o formato JSON, e o segundo lida com os dados o segundo then, é feito um loop pelos resultados da lista de Pokémon, e para cada Pokémon, é feito um novo fetch para obter informações detalhadas
         const arrayDePokemon = [];
         for (const pokemon of data.results) {
-            const response = await fetch(pokemon.url);
-            const pokemonData = await response.json();
+            const resposta = await fetch(pokemon.url);
+            const pokemonData = await resposta.json();
 
             // Crie um objeto com as informações desejadas do Pokémon
             const pokemonObject = {
-                name: pokemonData.name,
+                name:`${pokemonData.name.charAt(0).toUpperCase()}${pokemonData.name.slice(1)}`,
                 id: pokemonData.id,
                 types: pokemonData.types.map((type) => type.type.name),
                 abilities: pokemonData.abilities.map((ability) => ability.ability.name),
@@ -64,7 +64,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
         });
 
 
-        // MODO CARDS
+    // MODO CARDS
         $('#cartoes').on('click', function () {
             $('main').empty(); // Limpa o conteúdo anterior
 
@@ -90,7 +90,7 @@ fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
             });
         });
 
-        // MODO POKEDEX
+    // MODO POKEDEX
         $('#pokedex').on('click', function () {
             $('main').html(`<div class="pokedex">
             <div class="pokemon">

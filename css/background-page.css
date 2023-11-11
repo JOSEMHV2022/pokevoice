@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap');
 body {
     width: 100vw;
     height: 100vh;
@@ -6,6 +7,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    font-family: 'Pixelify Sans', sans-serif;
 }
 
 main {
@@ -18,6 +20,7 @@ main {
     align-content: center;
     text-align: center;
     gap: 10px;
+    font-family: 'Pixelify Sans', sans-serif;
 }
 
 #inicio {
@@ -57,6 +60,9 @@ main {
     .pokedex {
         flex-direction: column;
     }
+    .pokemon{
+        width: 80%;
+    }
 }
 .cartao-pokemon {
     height: 100%;
@@ -89,27 +95,30 @@ main {
 }
 .nomes{
     text-shadow: none;
-    font-weight: 900;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: 14px;
 }
 .frase-treinador{
-    font-weight: 900;
+    font-weight: 700;
+    font-family: 'Pixelify Sans', sans-serif;
     font-size: 12px;
     color: rgb(255, 255, 0);
     text-shadow: 1px 1px 5px black;
     border:2px solid black;
     border-radius: 50px 0px 50px 50px;
     padding: 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.534);
 }
 .pokedex {
     width: 90vw;
-    background-color: red;
+    background-color:rgb(255, 8, 0);
+    outline: 5px solid rgba(0, 0, 0, 0.785);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: 25px;
+    border-radius: 14px;
     padding: 15px;
+    gap: 20px;
 }
 .pokemon{
     display: flex;
@@ -171,13 +180,23 @@ main {
     overflow: hidden;
     border: 2px solid #fff;
     background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 2px, transparent 1px, transparent 3px);
+    /* repeating-linear-gradient: Indica que você está criando um gradiente linear repetido.
+0deg: Define o ângulo do gradiente como 0 graus, o que cria um gradiente horizontal.
+rgba(0, 0, 0, 0.2): A cor inicial do gradiente é preta (0, 0, 0) com uma opacidade de 20% (0.2), resultando em preto semi-transparente.
+rgba(0, 0, 0, 0.2) 2px: A cor do gradiente após 2 pixels. Isso significa que, após os primeiros 2 pixels, a cor do gradiente será novamente preta semi-transparente.
+transparent 1px: Define uma área transparente de 1 pixel entre os gradientes sucessivos.
+transparent 3px: Define uma área transparente de 3 pixels entre os gradientes sucessivos. */
 }
 .informacao{
     display: flex;
+    background-color: rgb(223, 223, 219);
     width: 35%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 12px;
 }
 .texto-id{
     font-weight: 900;
@@ -188,6 +207,7 @@ main {
 }
 .numero{
     color: rgb(255, 255, 255);
+    font-weight: 400;
 }
 .nome-botoes{
     margin-top: 20px;
@@ -209,6 +229,7 @@ main {
     font-size: 20px;
     font-weight: 900;
     border: 1.5px solid black;
+    border-radius: 2px;
 }
 .ataques{
     background-color: black;
